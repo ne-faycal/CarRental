@@ -32,9 +32,14 @@ const userSchema = mongoose.Schema({
         type:String,
         default:"",
     },
-    drivingLicensss:{
+    uid:{
+    type : Number ,
+    required: true ,
+    unique:true
+    },
+    address:{
         type:String,
-
+        default : "indefiend address",
     }
 });
 const UserSchema = mongoose.model("userSchema",userSchema);

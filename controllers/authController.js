@@ -58,7 +58,7 @@ const authMethods = {
     register:async (req, res) => {
     try {
         console.log(req.body);
-        const { name, email, password, password2,famillyName ,firstName,phoneNumber} = req.body;
+        const {  email, password, password2,famillyName ,firstName,phoneNumber} = req.body;
         validationSchema.parse({
             firstName:firstName,
             famillyName: famillyName,
@@ -69,12 +69,12 @@ const authMethods = {
         const existinguser = await Userschema.findOne({ email: email });
         if (password !== password2) {
             return res.status(400).json({ "msg": "password does not match" });
-        } else if (existinguser && existinguser.isAccountVerified) {
+        } else if (existinguser && existinguser.isVerified) {
 
-            return res.status(400).json({ "msg": "User aleardy exist " });
+            return res.status(404).json({ "msg": "User aleardy exist " });
 
         } else {
-            if (existinguser && !existinguser.isAccountVerified) {
+            if (existinguser && !existinguser.isVerified) {
                 await Userschema.deleteOne({ email });
             }
             const seltRound = 10;
@@ -84,13 +84,15 @@ const authMethods = {
             console.log("salt :" + salt);
             hashedPassword = await bcrypt.hash(password, salt);
             console.log("hashed password :" + hashedPassword);
+            const uid = Date.now()+ Math.floor(Math.random() * 10000);
 
             const user = {
                 firstName: firstName,
                 famillyName:famillyName,
                 phoneNumber:phoneNumber,
                 password: hashedPassword,
-                email: email
+                email: email,
+                uid:uid
             }
             console.log(user);
             await new Userschema(
@@ -121,10 +123,6 @@ const authMethods = {
             return res.status(200).json({ "msg": "user register succusfuly" });
 
         }
-
-
-
-
     } catch (error) {
         console.log(error);
         //handeling errors 
@@ -181,6 +179,7 @@ login :async (req, res) => {
         return res.status(501).json({ "msg": "internel server errro please try leater " });
     }
 },
+// function of verify account (when the user do the registrition)
 verify_account:async (req, res) => {
     try {
         console.log(req.body);
@@ -212,6 +211,7 @@ verify_account:async (req, res) => {
 
 
 },
+// function of reset otp (call it in the cas of forget pass )
 reset_otp: async (req, res) => {
 
     try {
@@ -264,6 +264,7 @@ reset_otp: async (req, res) => {
 
 
 },
+// function of forget password 
 forget_password: async (req, res) => {
     try {
         const { email, otp, newPassword } = req.body;
@@ -306,8 +307,6 @@ forget_password: async (req, res) => {
     } catch (error) {
 
     }
-
 }
-
 }
 export default authMethods;
