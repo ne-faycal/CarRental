@@ -146,7 +146,7 @@ login :async (req, res) => {
         const { email, password } = req.body;
         if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
             console.log("email not valide");
-            return res.status(400).json({ message: "email not valide" });
+            return res.status(400).json({ "msg": "email not valide" });
         }
         if (!email || !password) {
             return res.status(401).json({ "msg": "Enter All Fields Pleas" });
@@ -154,7 +154,7 @@ login :async (req, res) => {
         const existinguser = await Userschema.findOne({ email });
         
         if (!existinguser || existinguser &&!existinguser.isVerified) {
-            return res.status(401).json({ "msg": "The User Is Not Regiter Please Register First" });
+            return res.status(404).json({ "msg": "The User Is Not Regiter Please Register First" });
 
         } else {
             console.log("its pass here");
@@ -166,7 +166,7 @@ login :async (req, res) => {
                 const refreshToken = generateRefreshToken(existinguser.email);
                 console.log("the access token is : " + token);
                 console.log("the refreash token is : " + refreshToken);
-                res.status(200).json({ "msg": "User Login Succesfuly" });
+                res.status(200).json({ "msg": "User Login Succesfuly",token });
             } else {
                 return res.status(401).json({ "msg": "Wrong Password try again " });
             }
@@ -191,7 +191,7 @@ verify_account:async (req, res) => {
 
         const existingUser = await Userschema.findOne({ email });
         if (!email || !existingUser) {
-            res.status(400).json({ "msg": "the user is not register please register first " });
+            res.status(404).json({ "msg": "the user is not register please register first " });
         } else {
             if (existingUser.expiredOtp < Date.now()) {
                 res.status(401).json({ "msg": "the otp is already expired " });
@@ -229,7 +229,7 @@ reset_otp: async (req, res) => {
         console.log(existingUser);
         if (!existingUser) {
             console.log()
-            return res.status(400).json({ "msg": "the user is not existe " });
+            return res.status(404).json({ "msg": "the user is not existe " });
         } else {
             //call generate top method 
             const otp = generateOtp(4);
@@ -277,7 +277,7 @@ forget_password: async (req, res) => {
         } else {
             let existingUser = await Userschema.findOne({ email });
             if (!existingUser) {
-                return res.status(400).json({ "msg": "User not found " });
+                return res.status(404).json({ "msg": "User not found " });
 
             } else {
                 if (existingUser.otp !== otp) {

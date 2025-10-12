@@ -1,10 +1,10 @@
 import UserSchema from "/Users/faycalabdelhadinemouchi/Documents/nodeProjects/CarRentalProject/model/userSchema.js";
 import bookingSchema from "/Users/faycalabdelhadinemouchi/Documents/nodeProjects/CarRentalProject/model/bookingSchema.js";
 import CarSchema from "/Users/faycalabdelhadinemouchi/Documents/nodeProjects/CarRentalProject/model/carSchema.js";
-import { Admin } from "mongodb";
 import agenda from "/Users/faycalabdelhadinemouchi/Documents/nodeProjects/CarRentalProject/config/agenda.js";
 import Stripe from "stripe";
 import dotenv from "dotenv";
+
 dotenv.config();
 const BookingMethods = {
     // function of creating a new booking (its exucuted when the user click to book now button )
@@ -47,28 +47,28 @@ const BookingMethods = {
                         console.log(totalPrice);
                         const Bid = Date.now() + Math.floor(Math.random() * 10000);
 
-                        // const prices = await stripe.prices.list({
-                        //     product: stripId,
-                        //     active: true,
-                        //     limit: 1,
-                        // });
-                        // if (!prices.data.length) {
-                        //     return res.status(404).json({ error: "No price found for this product" });
-                        // }
-                        // const priceId = prices.data[0].id;
-                        // //  Create a Checkout session
-                        // const session = await stripe.checkout.sessions.create({
-                        //     mode: "payment",
-                        //     payment_method_types: ["card"],
-                        //     line_items: [
-                        //         {
-                        //             price: priceId,
-                        //             quantity: 1,
-                        //         },
-                        //     ],
-                        //     success_url: "http://sitename.com/checkout-success",
-                        //     cancel_url: "http://sitename.com/checkout-cancel",
-                        // });
+                        const prices = await stripe.prices.list({
+                            product: stripId,
+                            active: true,
+                            limit: 1,
+                        });
+                        if (!prices.data.length) {
+                            return res.status(404).json({ error: "No price found for this product" });
+                        }
+                        const priceId = prices.data[0].id;
+                        //  Create a Checkout session
+                        const session = await stripe.checkout.sessions.create({
+                            mode: "payment",
+                            payment_method_types: ["card"],
+                            line_items: [
+                                {
+                                    price: priceId,
+                                    quantity: 1,
+                                },
+                            ],
+                            success_url: "https://commons.wikimedia.org/wiki/File:Anime_Girl.png?uselang=fr",
+                            cancel_url: "https://commons.wikimedia.org/wiki/File:Anime_Girl.png?uselang=fr",
+                        });
                         const newBooking = await new bookingSchema({
                             Bid,
                             cid,
@@ -93,7 +93,7 @@ const BookingMethods = {
                         });
 
 
-                        return res.status(200).json({ "msg": "succus", newBooking ,  });//url: session.url
+                        return res.status(200).json({ "msg": "succus", newBooking , url: session.url });
 
                     }
                 }

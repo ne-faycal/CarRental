@@ -7,10 +7,17 @@ import reviewsRoute from "/Users/faycalabdelhadinemouchi/Documents/nodeProjects/
 dotenv.config();
 const app = express();
 import connectDB from "/Users/faycalabdelhadinemouchi/Documents/nodeProjects/CarRentalProject/config/db.js";
+import cors from "cors";
 // connection to data base 
 const DB_URL = process.env.DB_URL;
 connectDB(DB_URL);
 // middelwars 
+app.use(cors({
+  origin: "*" ,// allowed domains (all domains are allowed ntill we specefique the domailn of the front end )
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
+})); 
 app.use(express.json());
 app.use("/api",Users);
 app.use("/api",cars);
