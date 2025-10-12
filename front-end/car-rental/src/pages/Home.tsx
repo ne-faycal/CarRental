@@ -1,6 +1,5 @@
 import React from "react";
-import SearchOptions from "../constants/SearchOptions";
-import { Search } from "lucide-react";
+import SearchOptions from "../components/SearchOptions";
 import Navbar from "../components/NavbarHome";
 const Home = () => {
   return (

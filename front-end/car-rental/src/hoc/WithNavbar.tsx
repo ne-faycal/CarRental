@@ -7,7 +7,7 @@ const WithNavbar = <p extends object>(
   const ComponentWithNavbar: React.FC<p> = (props) => (
     <div>
       <Navbar />
-      <WrappedComponent {...props} />
+      <WrappedComponent   {...props} />
     </div>
   );
   return ComponentWithNavbar;

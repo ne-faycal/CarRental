@@ -1,11 +1,33 @@
 import React from "react";
 
+import    { useState } from "react";
+
 const Searchbox = () => {
+  
+const[pickUpLocation,setPickUpLocation]=useState<string>("");
+const [ pickUpDate,setPickUpDate]=useState<string>("")
+const [ returnDate,setReturnDate]=useState<string>("");
+
+
+  const handlelocationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setPickUpLocation(e.target.value);
+
+}
+
+const handlePickUpDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  setPickUpDate(e.target.value);
+}
+
+
+const handleReturnDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  setReturnDate(e.target.value);
+}
+
   return (
     <div className="bg-white shadow-lg rounded-full  px-8 py-6 flex flex-wrap  items-center justify-between w-full sm:w-1/2 max-w-5xl  mx-auto mt-16 ">
       <div className="flex flex-col pl-5">
         <label className="">Pick up location</label>
-        <select  name="yawidi" className="text-black focus:outline-none sm:flex-row sm:items-end">
+        <select  onChange={handlelocationChange} value={pickUpLocation} name="yawidi" className="text-black focus:outline-none sm:flex-row sm:items-end" >
           <option value="">Select Wilaya</option>
           <option value="adrar">Adrar</option>
           <option value="chlef">Chlef</option>
@@ -65,16 +87,18 @@ const Searchbox = () => {
           <option value="djanet">Djanet</option>
           <option value="el-mghair">El M’Ghair</option>
           <option value="el-meniah">El Meniaa</option>
-          <option value="">relizane</option>
+         
         </select>
       </div>
       <div>
-        <label className=" text-black flex flex-col">Pick up date</label>
-        <input type="date" placeholder="yyyy-mm-dd" className="" />
+        <label className=" text-black flex flex-col" >Pick up date</label>
+        <input type="date" placeholder="yyyy-mm-dd" className=""    value={pickUpDate}
+      onChange={handlePickUpDateChange}/>
       </div>
       <div>
         <label className="text-black flex flex-col">Return up date</label>
-        <input type="date" placeholder="yyyy-mm-dd" className="" />
+        <input type="date" placeholder="yyyy-mm-dd" className=""    value={returnDate}
+      onChange={handleReturnDateChange}/>
       </div>
       <button className="bg-[#3B82F6] font-medium text-white py-2 px-7 rounded-full">
         Search
