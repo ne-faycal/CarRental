@@ -1,6 +1,6 @@
 import Agenda from "agenda";
-import CarSchema from "/Users/faycalabdelhadinemouchi/Documents/nodeProjects/CarRentalProject/model/carSchema.js";
-import bookingSchema from "/Users/faycalabdelhadinemouchi/Documents/nodeProjects/CarRentalProject/model/bookingSchema.js";
+import CarSchema from "../model/carSchema.js";
+import bookingSchema from "../model/bookingSchema.js";
 const agenda = new Agenda({ db: { address: process.env.DB_URL } });
 // defin the action that happen when we called agenda by specifique time
 agenda.define("update_car_status", async (job) => {

@@ -1,5 +1,5 @@
-import ReviewsSchema from "/Users/faycalabdelhadinemouchi/Documents/nodeProjects/CarRentalProject/model/reviews.js";
-import UserSchema from "/Users/faycalabdelhadinemouchi/Documents/nodeProjects/CarRentalProject/model/userSchema.js";
+import ReviewsSchema from "../model/reviews.js";
+import UserSchema from "../model/userSchema.js";
 const ReviewsMethods = {
     // function of add new review
     add_review:async (req,res)=>{

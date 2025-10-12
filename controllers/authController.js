@@ -1,5 +1,5 @@
 
-import Userschema from "/Users/faycalabdelhadinemouchi/Documents/nodeProjects/CarRentalProject/model/userSchema.js";
+import Userschema from "../model/userSchema.js";
 import bcrypt from "bcryptjs";
 import zod, { email, ZodError } from "zod";
 import env from "dotenv";

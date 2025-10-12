@@ -1,8 +1,8 @@
 import Strip from "stripe";
-import CarSchema from "/Users/faycalabdelhadinemouchi/Documents/nodeProjects/CarRentalProject/model/carSchema.js";
-import UserSchema from "/Users/faycalabdelhadinemouchi/Documents/nodeProjects/CarRentalProject/model/userSchema.js";
+import CarSchema from "../model/carSchema.js";
+import UserSchema from "../model/userSchema.js";
 import dotenv from "dotenv";
-import bookingSchema from "/Users/faycalabdelhadinemouchi/Documents/nodeProjects/CarRentalProject/model/bookingSchema.js";
+import bookingSchema from "../model/bookingSchema.js";
 dotenv.config();
 
 

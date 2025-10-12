@@ -1,7 +1,7 @@
 import express from "express";
-import BookingMethods from "/Users/faycalabdelhadinemouchi/Documents/nodeProjects/CarRentalProject/controllers/bookingController.js";
+import BookingMethods from "../controllers/bookingController.js";
 const bookingRoute = express.Router();
-import isAuthunticated from "/Users/faycalabdelhadinemouchi/Documents/nodeProjects/CarRentalProject/config/Auth.js";
+import isAuthunticated from "../config/Auth.js";
 // add new booking 
 bookingRoute.post("/create-booking",isAuthunticated,BookingMethods.creat_booking);
 bookingRoute.get("/admine-all-bookings-number",isAuthunticated,BookingMethods.Admine_all_bookings_number);

@@ -1,12 +1,12 @@
 import express from "express";
 import dotenv from "dotenv";
-import Users from "/Users/faycalabdelhadinemouchi/Documents/nodeProjects/CarRentalProject/routes/auth.js";
-import cars from "/Users/faycalabdelhadinemouchi/Documents/nodeProjects/CarRentalProject/routes/car.js";
-import booking from "/Users/faycalabdelhadinemouchi/Documents/nodeProjects/CarRentalProject/routes/booking.js";
-import reviewsRoute from "/Users/faycalabdelhadinemouchi/Documents/nodeProjects/CarRentalProject/routes/review.js";
+import Users from "./routes/auth.js";
+import cars from "./routes/car.js";
+import booking from "./routes/booking.js";
+import reviewsRoute from "./routes/review.js";
 dotenv.config();
 const app = express();
-import connectDB from "/Users/faycalabdelhadinemouchi/Documents/nodeProjects/CarRentalProject/config/db.js";
+import connectDB from "./config/db.js";
 import cors from "cors";
 // connection to data base 
 const DB_URL = process.env.DB_URL;

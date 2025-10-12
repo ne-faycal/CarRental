@@ -1,7 +1,7 @@
 import express from "express";
 const carRoute = express.Router();
-import carCotroller from "/Users/faycalabdelhadinemouchi/Documents/nodeProjects/CarRentalProject/controllers/carController.js";
-import isAuthunticated from "/Users/faycalabdelhadinemouchi/Documents/nodeProjects/CarRentalProject/config/Auth.js";
+import carCotroller from "../controllers/carController.js";
+import isAuthunticated from "../config/Auth.js";
 carRoute.get("/all-cars",isAuthunticated,carCotroller.showAllCars);
 carRoute.post("/add-car",isAuthunticated,carCotroller.addCar);
 carRoute.get("/car-details/:cid",isAuthunticated,carCotroller.cad_datails);

@@ -1,7 +1,7 @@
-import UserSchema from "/Users/faycalabdelhadinemouchi/Documents/nodeProjects/CarRentalProject/model/userSchema.js";
-import bookingSchema from "/Users/faycalabdelhadinemouchi/Documents/nodeProjects/CarRentalProject/model/bookingSchema.js";
-import CarSchema from "/Users/faycalabdelhadinemouchi/Documents/nodeProjects/CarRentalProject/model/carSchema.js";
-import agenda from "/Users/faycalabdelhadinemouchi/Documents/nodeProjects/CarRentalProject/config/agenda.js";
+import UserSchema from "../model/userSchema.js";
+import bookingSchema from "../model/bookingSchema.js";
+import CarSchema from "../model/carSchema.js";
+import agenda from "../config/agenda.js";
 import Stripe from "stripe";
 import dotenv from "dotenv";
 
