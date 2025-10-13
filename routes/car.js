@@ -1,0 +1,13 @@
+import express from "express";
+const carRoute = express.Router();
+import carCotroller from "../controllers/carController.js";
+import isAuthunticated from "../config/Auth.js";
+carRoute.get("/all-cars",isAuthunticated,carCotroller.showAllCars);
+carRoute.post("/add-car",isAuthunticated,carCotroller.addCar);
+carRoute.get("/car-details/:cid",isAuthunticated,carCotroller.cad_datails);
+carRoute.delete("/emove-car/:cid",isAuthunticated,carCotroller.delete_car);
+carRoute.get("/Admin-All-Cars-number",isAuthunticated,carCotroller.admine_total_cars_num);
+carRoute.get("/Admin-All-Cars",isAuthunticated,carCotroller.admine_total_cars);
+carRoute.get("/search-by-name",isAuthunticated,carCotroller.search_car_by_name);
+carRoute.get("/fiter-cars",isAuthunticated,carCotroller.filter_car);
+export default carRoute;
