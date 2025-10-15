@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import { type } from "os";
 const bookinSchema = mongoose.Schema({
     Bid:{
     type :Number ,
