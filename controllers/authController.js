@@ -41,7 +41,7 @@ const validationSchema = zod.object(
 // function of generate a jwt 
 const creatToken = (email) => {
     return jwt.sign({ email }, process.env.secret_key, {
-        expiresIn: 3600 / 4,
+        expiresIn: 3600 * 4,// the access token is 24 h only for testing 
 
     });
 }
