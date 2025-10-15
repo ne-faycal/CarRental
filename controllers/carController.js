@@ -13,7 +13,7 @@ const carMethodes = {
             const stripe = new Strip(process.env.SECRET_KEY);
             console.log(req.body)
             const { image, priceByDay, name, mark, featers, description, seats, tankType, gearboxType, place, addBy, year, category } = req.body;
-            if (!image || !priceByDay || !name || !mark || !featers || !description || !seats || !tankType || !gearboxType || !place || !addBy || !year || !category) {
+            if (!image || !priceByDay || !name || !mark  || !description || !seats || !tankType || !gearboxType || !place || !addBy || !year || !category) {
                 return res.status(404).json({ "msg": "All Fields Are Required" });
 
             } else {
