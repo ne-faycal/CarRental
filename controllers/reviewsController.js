@@ -11,7 +11,7 @@ const ReviewsMethods = {
             }else{
                 const existingUser = await UserSchema.findOne({uid});
                 if (!existingUser) {
-                  return  res.status(404).json({"msg":"User Not Found"}); 
+                  return  res.status(404).json({"msg":"User Not Found"});
                 }else{
                     const date =  Date.now();
                     const rid = Date.now()+ Math.floor(Math.random() * 10000);
