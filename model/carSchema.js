@@ -4,7 +4,6 @@ const carSchema = mongoose.Schema({
     addBy:{
          type : Number ,
     required: true ,
-    unique:true
     },
 cid:{
     type : Number ,
