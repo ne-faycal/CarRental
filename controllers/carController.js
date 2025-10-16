@@ -189,7 +189,17 @@ const carMethodes = {
                     return res.status(404).json({ "msg": "User Not Found" });
                 } else {
 
-                    const allAdminCars = await CarSchema.find({ addBy: exsistingUser.uid });
+                    const allAdminCars = await CarSchema.find({ addBy: exsistingUser.uid },{
+                    name:true,
+                    mark:true,
+                    image:true,
+                    category:true,
+                    status:true,
+                    "info.seat":true,
+                    "info.gearboxType":true,
+                    
+
+                });
                     return res.status(200).json({ "msg": "succuss", allAdminCars });
 
                 }
