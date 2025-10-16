@@ -29,7 +29,7 @@ const carMethodes = {
                     // 1. Create product
                     const product = await stripe.products.create({
                         name: name,
-                        images: [image]||[],
+                        images: !image?[]:[image],
                         description: description,
                         // images: image || [],
                         metadata: {
