@@ -13,7 +13,7 @@ const carMethodes = {
         try {
             const stripe = new Strip(process.env.SECRET_KEY);
            
-            const { image, priceByDay, name, mark, description, seats, tankType, gearboxType, place, addBy, year, category } = req.body;
+            const { image, priceByDay, name,featers, mark, description, seats, tankType, gearboxType, place, addBy, year, category } = req.body;
             if ( !priceByDay || !name || !mark  || !description || !seats || !tankType || !gearboxType || !place || !addBy || !year || !category) {
                 return res.status(404).json({ "msg": "All Fields Are Required" });
 
