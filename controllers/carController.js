@@ -9,9 +9,10 @@ dotenv.config();
 const carMethodes = {
     // function that allow admin add new car in the site 
     addCar: async (req, res) => {
+         console.log("the requuuuuuuuuuuuuuuuuuest"+req.body)
         try {
             const stripe = new Strip(process.env.SECRET_KEY);
-            console.log(req.body)
+           
             const { image, priceByDay, name, mark, featers, description, seats, tankType, gearboxType, place, addBy, year, category } = req.body;
             if ( !priceByDay || !name || !mark  || !description || !seats || !tankType || !gearboxType || !place || !addBy || !year || !category) {
                 return res.status(404).json({ "msg": "All Fields Are Required" });
