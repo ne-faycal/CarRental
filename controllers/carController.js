@@ -180,7 +180,7 @@ const carMethodes = {
 
         try {
             console.log(req.params);
-            const { admin } = req.params;
+            const  admin  = req.params.admin;
             if (!admin) {
                 return res.status(400).json({ "msg": "All Fields Are Required " });
             } else {
