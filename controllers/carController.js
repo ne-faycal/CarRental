@@ -87,7 +87,8 @@ const carMethodes = {
                 mark: 1,
                 priceByDay: 1,
                 cid: 1,
-                _id: 0
+                _id: 0,
+                image: 1
                 // we use the sort here becouse the user wont to see the availebal cars firs then he can see the cars that are not available
             }).sort({ avaibility: -1 });
             if (allcars.length === 0) {
