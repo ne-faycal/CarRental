@@ -80,17 +80,8 @@ const carMethodes = {
     showAllCars: async (req, res) => {
         try {
             let allcars = [];
-            allcars = await CarSchema.find({}, {
-                avaibility: 1,
-                info: 1,
-                name: 1,
-                mark: 1,
-                priceByDay: 1,
-                cid: 1,
-                _id: 0,
-                image: 1
-                // we use the sort here becouse the user wont to see the availebal cars firs then he can see the cars that are not available
-            }).sort({ avaibility: -1 });
+            allcars = await CarSchema.find({}).sort({ avaibility: -1 });   // we use the sort here becouse the user wont to see the availebal cars firs then he can see the cars that are not available
+
             if (allcars.length === 0) {
                 res.status(400).json({ "msg": "No Car availebel Now " });
             } else {
