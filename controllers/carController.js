@@ -179,8 +179,8 @@ const carMethodes = {
     admine_total_cars: async (req, res) => {
 
         try {
-            console.log(req.body);
-            const { admin } = req.body;
+            console.log(req.params);
+            const { admin } = req.params;
             if (!admin) {
                 return res.status(400).json({ "msg": "All Fields Are Required " });
             } else {
