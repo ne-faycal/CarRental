@@ -186,8 +186,8 @@ const carMethodes = {
                     mark:true,
                     image:true,
                     category:true,
-                    status:true,
-                    "info.seat":true,
+                    avaibility:true,
+                    "info.seats":true,
                     "info.gearboxType":true,
                     
 
